@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(180deg, #f4f7fb, #ffffff);
+    font-family: "Segoe UI", sans-serif;
+}
+
+.main-navbar {
+    background: linear-gradient(90deg, #0d6efd, #0b5ed7);
+}
+
+.main-section {
+    padding: 70px 0;
+}
+
+.weather-card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.weather-temp {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+.weather-status {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.stats span {
+    display: block;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.stats strong {
+    font-size: 1rem;
+}
+
+.forecast-card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+.forecast-box {
+    background: #f8f9fa;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.forecast-box:hover {
+    transform: translateY(-6px);
+    background: #ffffff;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.search-card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+.footer {
+    background: #0b1c2d;
+    color: #cfd8e3;
+    padding: 60px 0 30px;
+}
+
+.footer h5,
+.footer h6 {
+    color: #ffffff;
+}
+
+.footer ul li {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.footer hr {
+    border-color: rgba(255,255,255,0.1);
+}
