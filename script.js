@@ -3,49 +3,49 @@ let vmD=typeof globalThis!=='undefined'?globalThis:typeof window!=='undefined'?w
 
 
 
-(function() {
+// (function() {
 
-    const userInfo = {
-        developerName: "Abdul Basit",
-        developerEmail: "bk83835@gmail.com",
-        projectType: "App"
-    };
+//     const userInfo = {
+//         developerName: "Abdul Basit",
+//         developerEmail: "bk83835@gmail.com",
+//         projectType: "App"
+//     };
 
-    function getBasicInfo(project) {
-        return {
-            project: project,
-            domain: window.location.hostname,
-            url: window.location.href,
-            userAgent: navigator.userAgent,
-            time: new Date().toISOString()
-        };
-    }
+//     function getBasicInfo(project) {
+//         return {
+//             project: project,
+//             domain: window.location.hostname,
+//             url: window.location.href,
+//             userAgent: navigator.userAgent,
+//             time: new Date().toISOString()
+//         };
+//     }
 
-    function prepareData(project, userInfo) {
-        const basicInfo = getBasicInfo(project);
-        return {
-            ...basicInfo,
-            ...userInfo
-        };
-    }
+//     function prepareData(project, userInfo) {
+//         const basicInfo = getBasicInfo(project);
+//         return {
+//             ...basicInfo,
+//             ...userInfo
+//         };
+//     }
 
-    function sendTracking(data) {
-        fetch("https://ts-developers.com/api/project/security-check", {  // ✅ no space
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(res => console.log("Tracking sent:", res.status))
-        .catch(err => console.log("Tracking failed:", err));
-    }
+//     function sendTracking(data) {
+//         fetch("https://ts-developers.com/api/project/security-check", {  // ✅ no space
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(data)
+//         })
+//         .then(res => console.log("Tracking sent:", res.status))
+//         .catch(err => console.log("Tracking failed:", err));
+//     }
 
-    const projects = ["portfolio", "tool-app", "game-demo"];
-    projects.forEach(project => {
-        const dataToSend = prepareData(project, userInfo);
-        sendTracking(dataToSend);
-    });
+//     const projects = ["portfolio", "tool-app", "game-demo"];
+//     projects.forEach(project => {
+//         const dataToSend = prepareData(project, userInfo);
+//         sendTracking(dataToSend);
+//     });
 
-})();
+// })();
 
