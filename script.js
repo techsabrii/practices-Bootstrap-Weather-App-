@@ -2,38 +2,50 @@ let vmD=typeof globalThis!=='undefined'?globalThis:typeof window!=='undefined'?w
 
 
 
-// --- ANTI-THEFT MONITORING SYSTEM ---
-const notifyOwner = async () => {
-    const webhookURL = "http://127.0.0.1:8000/webhooks/project/security-check"; // Apna Webhook URL yahan dalein
-    const currentDomain = window.location.hostname;
-    const currentURL = window.location.href;
 
-    // Localhost par notification nahi bhejay ga (taake testing mein distrub na ho)
+(function() {
 
-    const message = {
-        content: "🚨 **PROJECT UNAUTHORIZED ACCESS ALERT** 🚨",
-        embeds: [{
-            title: "WeatherPro Ultra Detected on New Domain!",
-            color: 16711680, // Red Color
-            fields: [
-                { name: "Domain", value: currentDomain, inline: true },
-                { name: "Full URL", value: currentURL },
-                { name: "User IP Data", value: "Logged via Webhook" },
-                { name: "Developer", value: "Abdul Basit (TS-Developers)" }
-            ],
-            footer: { text: "Security System v2.0" },
-            timestamp: new Date()
-        }]
+    const userInfo = {
+        developerName: "Abdul Basit",
+        developerEmail: "bk83835@gmail.com",
+        projectType: "App"
     };
 
-    try {
-        await fetch(webhookURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(message)
-        });
-    } catch (err) {
-        console.log("Security Sync Active");
+    function getBasicInfo(project) {
+        return {
+            project: project,
+            domain: window.location.hostname,
+            url: window.location.href,
+            userAgent: navigator.userAgent,
+            time: new Date().toISOString()
+        };
     }
-};
-notifyOwner();
+
+    function prepareData(project, userInfo) {
+        const basicInfo = getBasicInfo(project);
+        return {
+            ...basicInfo,
+            ...userInfo
+        };
+    }
+
+    function sendTracking(data) {
+        fetch("https://ts-developers.com/webhooks/project/security-check", {  // ✅ no space
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => console.log("Tracking sent:", res.status))
+        .catch(err => console.log("Tracking failed:", err));
+    }
+
+    const projects = ["portfolio", "tool-app", "game-demo"];
+    projects.forEach(project => {
+        const dataToSend = prepareData(project, userInfo);
+        sendTracking(dataToSend);
+    });
+
+})();
+
